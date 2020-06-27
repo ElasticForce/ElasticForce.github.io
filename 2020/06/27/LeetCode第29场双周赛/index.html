@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>LeetCode-第29场双周赛 | Elastic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数组,LeetCode,集合">
+    <meta name="description" content="5432. 去掉最低工资和最高工资后的工资平均值给你一个整数数组 salary ，数组里每个数都是 唯一 的，其中 salary[i] 是第 i 个员工的工资。 请你返回去掉最低工资和最高工资以后，剩下员工工资的平均值。 示例 1： 1234输入：salary &#x3D; [4000,3000,1000,2000]输出：2500.00000解释：最低工资和最高工资分别是 1000 和 4000">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-第29场双周赛">
+<meta property="og:url" content="https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Elastic">
+<meta property="og:description" content="5432. 去掉最低工资和最高工资后的工资平均值给你一个整数数组 salary ，数组里每个数都是 唯一 的，其中 salary[i] 是第 i 个员工的工资。 请你返回去掉最低工资和最高工资以后，剩下员工工资的平均值。 示例 1： 1234输入：salary &#x3D; [4000,3000,1000,2000]输出：2500.00000解释：最低工资和最高工资分别是 1000 和 4000">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-27T16:41:04.620Z">
+<meta property="article:modified_time" content="2020-06-27T16:41:04.630Z">
+<meta property="article:author" content="ElasticForce">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="LeetCode">
+<meta property="article:tag" content="集合">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ElasticForce</h5>
+          <a href="mailto:elasticforce@foxmail.com" title="elasticforce@foxmail.com" class="mail">elasticforce@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ElasticForce" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/u014792301" target="_blank" >
+                <i class="icon icon-lg icon-contao"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode-第29场双周赛</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode-第29场双周赛</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-27T16:41:04.620Z" itemprop="datePublished" class="page-time">
+  2020-06-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5432-去掉最低工资和最高工资后的工资平均值"><span class="post-toc-number">1.</span> <span class="post-toc-text">5432. 去掉最低工资和最高工资后的工资平均值</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5433-n-的第-k-个因子"><span class="post-toc-number"></span> <span class="post-toc-text">5433. n 的第 k 个因子</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5434-删掉一个元素以后全为-1-的最长子数组"><span class="post-toc-number"></span> <span class="post-toc-text">5434. 删掉一个元素以后全为 1 的最长子数组</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode第29场双周赛"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode-第29场双周赛</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-28 00:41:04" datetime="2020-06-27T16:41:04.620Z"  itemprop="datePublished">2020-06-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="5432-去掉最低工资和最高工资后的工资平均值"><a href="#5432-去掉最低工资和最高工资后的工资平均值" class="headerlink" title="5432. 去掉最低工资和最高工资后的工资平均值"></a>5432. 去掉最低工资和最高工资后的工资平均值</h4><p>给你一个整数数组 <code>salary</code> ，数组里每个数都是 <strong>唯一</strong> 的，其中 <code>salary[i]</code> 是第 <code>i</code> 个员工的工资。</p>
+<p>请你返回去掉最低工资和最高工资以后，剩下员工工资的平均值。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：salary &#x3D; [4000,3000,1000,2000]</span><br><span class="line">输出：2500.00000</span><br><span class="line">解释：最低工资和最高工资分别是 1000 和 4000 。</span><br><span class="line">去掉最低工资和最高工资以后的平均工资是 (2000+3000)&#x2F;2&#x3D; 2500</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入：salary &#x3D; [1000,2000,3000]</span><br><span class="line">输出：2000.00000</span><br><span class="line">解释：最低工资和最高工资分别是 1000 和 3000 。</span><br><span class="line">去掉最低工资和最高工资以后的平均工资是 (2000)&#x2F;1&#x3D; 2000</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：salary &#x3D; [6000,5000,4000,3000,2000,1000]</span><br><span class="line">输出：3500.00000</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：salary &#x3D; [8000,9000,2000,3000,6000,1000]</span><br><span class="line">输出：4750.00000</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>3 &lt;= salary.length &lt;= 100</code></li>
+<li><code>10^3 &lt;= salary[i] &lt;= 10^6</code></li>
+<li><code>salary[i]</code> 是唯一的。</li>
+<li>与真实值误差在 <code>10^-5</code> 以内的结果都将视为正确答案。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">average</span><span class="params">(<span class="keyword">int</span>[] salary)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(salary);</span><br><span class="line">        salary[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">        salary[salary.length-<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; salary.length; i++) &#123;</span><br><span class="line">            sum+=salary[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum/(salary.length-<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>思路：</strong></p>
+<p>这道题很快就有思路，用得是排序的路子，借用的Java提供的排序算法，去掉数组首尾，再计算平均值。</p>
+<h3 id="5433-n-的第-k-个因子"><a href="#5433-n-的第-k-个因子" class="headerlink" title="5433. n 的第 k 个因子"></a>5433. n 的第 k 个因子</h3><p>给你两个正整数 <code>n</code> 和 <code>k</code> 。</p>
+<p>如果正整数 <code>i</code> 满足 <code>n % i == 0</code> ，那么我们就说正整数 <code>i</code> 是整数 <code>n</code> 的因子。</p>
+<p>考虑整数 <code>n</code> 的所有因子，将它们 <strong>升序排列</strong> 。请你返回第 <code>k</code> 个因子。如果 <code>n</code> 的因子数少于 <code>k</code> ，请你返回 <strong>-1</strong> 。</p>
+<p><strong>示例 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 12, k &#x3D; 3</span><br><span class="line">输出：3</span><br><span class="line">解释：因子列表包括 [1, 2, 3, 4, 6, 12]，第 3 个因子是 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 7, k &#x3D; 2</span><br><span class="line">输出：7</span><br><span class="line">解释：因子列表包括 [1, 7] ，第 2 个因子是 7 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 4, k &#x3D; 4</span><br><span class="line">输出：-1</span><br><span class="line">解释：因子列表包括 [1, 2, 4] ，只有 3 个因子，所以我们应该返回 -1 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 1, k &#x3D; 1</span><br><span class="line">输出：1</span><br><span class="line">解释：因子列表包括 [1] ，第 1 个因子为 1 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n &#x3D; 1000, k &#x3D; 3</span><br><span class="line">输出：4</span><br><span class="line">解释：因子列表包括 [1, 2, 4, 5, 8, 10, 20, 25, 40, 50, 100, 125, 200, 250, 500, 1000] 。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= k &lt;= n &lt;= 1000</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthFactor</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n%i==<span class="number">0</span>)&#123;</span><br><span class="line">                list.add(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (list.size()&lt;k)&#123;</span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.get(k-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>思路：</strong></p>
+<p>这道题也很简单，直接一个集合搞定。</p>
+<h3 id="5434-删掉一个元素以后全为-1-的最长子数组"><a href="#5434-删掉一个元素以后全为-1-的最长子数组" class="headerlink" title="5434. 删掉一个元素以后全为 1 的最长子数组"></a>5434. 删掉一个元素以后全为 1 的最长子数组</h3><p>给你一个二进制数组 <code>nums</code> ，你需要从中删掉一个元素。</p>
+<p>请你在删掉元素的结果数组中，返回最长的且只包含 1 的非空子数组的长度。</p>
+<p>如果不存在这样的子数组，请返回 0 。</p>
+<p><strong>提示 1：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,0,1]</span><br><span class="line">输出：3</span><br><span class="line">解释：删掉位置 2 的数后，[1,1,1] 包含 3 个 1 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [0,1,1,1,0,1,1,0,1]</span><br><span class="line">输出：5</span><br><span class="line">解释：删掉位置 4 的数字后，[0,1,1,1,1,1,0,1] 的最长全 1 子数组为 [1,1,1,1,1] 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,1]</span><br><span class="line">输出：2</span><br><span class="line">解释：你必须要删除一个元素。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 4：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [1,1,0,0,1,1,1,0,1]</span><br><span class="line">输出：4</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 5：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：nums &#x3D; [0,0,0]</span><br><span class="line">输出：0</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= nums.length &lt;= 10^5</code></li>
+<li><code>nums[i]</code> 要么是 <code>0</code> 要么是 <code>1</code> 。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubarray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> [] count = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> startIndex=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> endIndex=<span class="number">0</span>;</span><br><span class="line">        ArrayList&lt;Node&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="comment">//0的个数</span></span><br><span class="line">                count[<span class="number">0</span>]++;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//1的个数</span></span><br><span class="line">                count[<span class="number">1</span>]++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//是否是子串的起始索引</span></span><br><span class="line">            <span class="keyword">if</span> ((nums[i]==<span class="number">1</span>&amp;&amp;i==<span class="number">0</span>)||(nums[i]==<span class="number">1</span>&amp;&amp;nums[i-<span class="number">1</span>]==<span class="number">0</span>))&#123;</span><br><span class="line">                startIndex=i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//是否是子串的终止索引</span></span><br><span class="line">            <span class="keyword">if</span> (i==nums.length-<span class="number">1</span>||(nums[i]==<span class="number">1</span>&amp;&amp;nums[i+<span class="number">1</span>]==<span class="number">0</span>))&#123;</span><br><span class="line">                endIndex=i;</span><br><span class="line">                list.add(<span class="keyword">new</span> Node(startIndex,endIndex));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count[<span class="number">0</span>]==<span class="number">0</span>||count[<span class="number">0</span>]==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> nums.length-<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (count[<span class="number">1</span>]==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> len=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i!=list.size()-<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//判断两个子串是否相邻</span></span><br><span class="line">                <span class="keyword">if</span> (list.get(i).end==list.get(i+<span class="number">1</span>).start-<span class="number">2</span>)&#123;</span><br><span class="line">                    len = list.get(i).getLen()+list.get(i+<span class="number">1</span>).getLen();</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    len=list.get(i).getLen();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (list.size()==<span class="number">1</span>)&#123;</span><br><span class="line">                len=list.get(i).getLen();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (max&lt;len)&#123;</span><br><span class="line">            max=len;</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    <span class="keyword">return</span> max;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//记录子串的索引</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> start;</span><br><span class="line">    <span class="keyword">int</span> end;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.start = start;</span><br><span class="line">        <span class="keyword">this</span>.end = end;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLen</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.end-<span class="keyword">this</span>.start+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>思路：</strong></p>
+<p>前两道题花了大概15分钟，看了眼第四题考的图，还没写过图的题，所以又退回来写第三题。然后第三道题花了我大部分时间。</p>
+<p>这道题和字符串的最长子序列的类型题有些类似，这次使用数组的形式考。中间考虑过用HashMap嵌套HashMap的奇怪想法，后来发现行不通，还是创建了一个节点类。</p>
+<p>最后用了一大堆判定的暴力解法给强行破了。</p>
+<p>大概思路是先判断0和1的个数，如果0的个数小于2个或者完全没有1，就直接判断出来。</p>
+<p>否则就用一个节点类来记录子串的起始索引、终止索引。判断两个子串是否相邻，相邻就可以进行子串长度相加。</p>
+<p>明天起床再看看更优解吧。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-27T16:41:04.630Z" itemprop="dateUpdated">2020-06-28 00:41:04</time>
+</span><br>
+
+
+        
+        Thanks for reading! 转载请注明出处：<a href="/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" target="_blank" rel="external">https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://www.elasticforce.top">
+            <img src="/img/avatar.jpg" alt="ElasticForce">
+            ElasticForce
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9B%86%E5%90%88/" rel="tag">集合</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/27/LeetCode-136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">LeetCode-136.只出现一次的数字</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ElasticForce &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Elastic的Blog?';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Elastic的Blog!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
