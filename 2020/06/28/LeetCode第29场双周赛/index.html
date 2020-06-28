@@ -24,12 +24,12 @@
     <meta name="description" content="5432. 去掉最低工资和最高工资后的工资平均值给你一个整数数组 salary ，数组里每个数都是 唯一 的，其中 salary[i] 是第 i 个员工的工资。 请你返回去掉最低工资和最高工资以后，剩下员工工资的平均值。 示例 1： 1234输入：salary &#x3D; [4000,3000,1000,2000]输出：2500.00000解释：最低工资和最高工资分别是 1000 和 4000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode-第29场双周赛">
-<meta property="og:url" content="https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:url" content="https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/index.html">
 <meta property="og:site_name" content="Elastic">
 <meta property="og:description" content="5432. 去掉最低工资和最高工资后的工资平均值给你一个整数数组 salary ，数组里每个数都是 唯一 的，其中 salary[i] 是第 i 个员工的工资。 请你返回去掉最低工资和最高工资以后，剩下员工工资的平均值。 示例 1： 1234输入：salary &#x3D; [4000,3000,1000,2000]输出：2500.00000解释：最低工资和最高工资分别是 1000 和 4000">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-06-27T16:43:28.090Z">
-<meta property="article:modified_time" content="2020-06-27T16:43:28.100Z">
+<meta property="article:published_time" content="2020-06-28T16:27:35.936Z">
+<meta property="article:modified_time" content="2020-06-28T16:27:35.936Z">
 <meta property="article:author" content="ElasticForce">
 <meta property="article:tag" content="Leetcode">
 <meta property="article:tag" content="数组">
@@ -145,8 +145,8 @@
         <h1 class="title">LeetCode-第29场双周赛</h1>
         <h5 class="subtitle">
             
-                <time datetime="2020-06-27T16:43:28.090Z" itemprop="datePublished" class="page-time">
-  2020-06-28
+                <time datetime="2020-06-28T16:27:35.936Z" itemprop="datePublished" class="page-time">
+  2020-06-29
 </time>
 
 
@@ -178,7 +178,7 @@
     <div class="post-card">
         <h1 class="post-card-title">LeetCode-第29场双周赛</h1>
         <div class="post-meta">
-            <time class="post-time" title="2020-06-28 00:43:28" datetime="2020-06-27T16:43:28.090Z"  itemprop="datePublished">2020-06-28</time>
+            <time class="post-time" title="2020-06-29 00:27:35" datetime="2020-06-28T16:27:35.936Z"  itemprop="datePublished">2020-06-29</time>
 
             
 	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
@@ -284,6 +284,15 @@
 <p>大概思路是先判断0和1的个数，如果0的个数小于2个或者完全没有1，就直接判断出来。</p>
 <p>否则就用一个节点类来记录子串的起始索引、终止索引。判断两个子串是否相邻，相邻就可以进行子串长度相加。</p>
 <p>明天起床再看看更优解吧。</p>
+<p>————————————-补充————————————-</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestSubarray</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n = nums.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[i] == <span class="number">1</span>) &#123;</span><br><span class="line">            ++a;</span><br><span class="line">            ++b;</span><br><span class="line">            ret = Math.max(ret, a);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            a = b;</span><br><span class="line">            b = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (ret == n) ret--;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>leetcode上面看到的解法，感觉挺巧妙的。</p>
+<p>遇到1时，a和b同时自增。且吧最大长度存入ret中。</p>
+<p>当遇到第一次0时，a变成了b的值，b重置为0（也就是a保留了之前的长度）。</p>
+<p>如果下一次还是1，a继续自增（相当于跳过了这个0）</p>
+<p>如果下一次是0，a就变成b，b此时为0，即中间如果有两个0就不能连续。</p>
+<p>最后处理了一下全为1的情况。</p>
 
         </div>
 
@@ -292,12 +301,12 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2020-06-27T16:43:28.100Z" itemprop="dateUpdated">2020-06-28 00:43:28</time>
+    最后更新时间：<time datetime="2020-06-28T16:27:35.936Z" itemprop="dateUpdated">2020-06-29 00:27:35</time>
 </span><br>
 
 
         
-        Thanks for reading! 转载请注明出处：<a href="/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" target="_blank" rel="external">https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/</a>
+        Thanks for reading! 转载请注明出处：<a href="/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" target="_blank" rel="external">https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/</a>
         
     </div>
     
@@ -324,7 +333,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -334,22 +343,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -369,21 +378,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2020/06/28/%E5%AD%97%E8%8A%82%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%AC%94%E8%AF%95----%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E7%AC%94%E8%AF%95%E7%BB%8F%E5%8E%86/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">字节第二次笔试----一次失败的笔试经历</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2020/06/27/LeetCode-136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/" id="post-next" class="post-nav-link">
+      <a href="/2020/06/28/%E5%AD%97%E8%8A%82%E7%AC%AC%E4%BA%8C%E6%AC%A1%E7%AC%94%E8%AF%95----%E4%B8%80%E6%AC%A1%E5%A4%B1%E8%B4%A5%E7%9A%84%E7%AC%94%E8%AF%95%E7%BB%8F%E5%8E%86/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">LeetCode-136.只出现一次的数字</h4>
+        <h4 class="title">字节第二次笔试----一次失败的笔试经历</h4>
       </a>
     </div>
   
@@ -479,7 +481,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -489,22 +491,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&title=《LeetCode-第29场双周赛》 — Elastic&source=个人随笔" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode-第29场双周赛》 — Elastic&url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/&via=https://www.elasticforce.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -515,7 +517,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.elasticforce.top/2020/06/27/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.elasticforce.top/2020/06/28/LeetCode%E7%AC%AC29%E5%9C%BA%E5%8F%8C%E5%91%A8%E8%B5%9B/" alt="微信分享二维码">
 </div>
 
 
