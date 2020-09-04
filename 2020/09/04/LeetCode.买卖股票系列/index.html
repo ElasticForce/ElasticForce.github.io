@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>LeetCode.买卖股票系列 | Elastic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Leetcode,动态规划">
+    <meta name="description" content="121. 买卖股票的最佳时机给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意：你不能在买入股票前卖出股票。 示例 1: 1234输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode.买卖股票系列">
+<meta property="og:url" content="https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/index.html">
+<meta property="og:site_name" content="Elastic">
+<meta property="og:description" content="121. 买卖股票的最佳时机给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。 如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。 注意：你不能在买入股票前卖出股票。 示例 1: 1234输入: [7,1,5,3,6,4]输出: 5解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-09-04T16:33:48.960Z">
+<meta property="article:modified_time" content="2020-09-04T08:14:46.988Z">
+<meta property="article:author" content="ElasticForce">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="动态规划">
+<meta name="twitter:card" content="summary">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.png)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">ElasticForce</h5>
+          <a href="mailto:elasticforce@foxmail.com" title="elasticforce@foxmail.com" class="mail">elasticforce@foxmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/ElasticForce" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://blog.csdn.net/u014792301" target="_blank" >
+                <i class="icon icon-lg icon-contao"></i>
+                CSDN
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode.买卖股票系列</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode.买卖股票系列</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-09-04T16:33:48.960Z" itemprop="datePublished" class="page-time">
+  2020-09-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#121-买卖股票的最佳时机"><span class="post-toc-number">1.</span> <span class="post-toc-text">121. 买卖股票的最佳时机</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#122-买卖股票的最佳时机-II"><span class="post-toc-number">2.</span> <span class="post-toc-text">122. 买卖股票的最佳时机 II</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#123-买卖股票的最佳时机-III"><span class="post-toc-number">3.</span> <span class="post-toc-text">123. 买卖股票的最佳时机 III</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#188-买卖股票的最佳时机-IV"><span class="post-toc-number">4.</span> <span class="post-toc-text">188. 买卖股票的最佳时机 IV</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#309-最佳买卖股票时机含冷冻期"><span class="post-toc-number">5.</span> <span class="post-toc-text">309. 最佳买卖股票时机含冷冻期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#714-买卖股票的最佳时机含手续费"><span class="post-toc-number">6.</span> <span class="post-toc-text">714. 买卖股票的最佳时机含手续费</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode.买卖股票系列"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode.买卖股票系列</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-09-05 00:33:48" datetime="2020-09-04T16:33:48.960Z"  itemprop="datePublished">2020-09-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">121. 买卖股票的最佳时机</a></h4><p>给定一个数组，它的第 <em>i</em> 个元素是一支给定股票第 <em>i</em> 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 5</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出，最大利润 &#x3D; 6-1 &#x3D; 5 。</span><br><span class="line">     注意利润不能是 7-1 &#x3D; 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,6,4,3,1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
+
+<p><strong>思路：</strong></p>
+<p>除了暴力解法外，有这两种思路：</p>
+<p>1.动态规划，每天的状态分为：持有和卖出，判断卖出的最大值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//持有和卖出</span></span><br><span class="line">        <span class="keyword">int</span> keep=-prices[<span class="number">0</span>],sale=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="comment">//如果今天卖出或持有的最大收益</span></span><br><span class="line">            sale = Math.max(sale, prices[i]+keep);</span><br><span class="line">            <span class="comment">//选择持有的最小花费</span></span><br><span class="line">            keep = Math.max(-prices[i], keep);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sale;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.倒叙单调栈，差值最大的即结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">       Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">       <span class="comment">//倒叙插入</span></span><br><span class="line">       stack.push(prices[prices.length-<span class="number">1</span>]);</span><br><span class="line">       <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = prices.length-<span class="number">2</span>; i &gt;=<span class="number">0</span> ; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i]&gt;stack.peek())&#123;</span><br><span class="line">                <span class="comment">//如果当前值大于栈顶，就存入栈</span></span><br><span class="line">                stack.push(prices[i]);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//否则计算差值</span></span><br><span class="line">                max = Math.max(max, stack.peek()-prices[i]);</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="122-买卖股票的最佳时机-II"><a href="#122-买卖股票的最佳时机-II" class="headerlink" title="122. 买卖股票的最佳时机 II"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. 买卖股票的最佳时机 II</a></h4><p>给定一个数组，它的第 <em>i</em> 个元素是一支给定股票第 <em>i</em> 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p><strong>注意：</strong>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,1,5,3,6,4]</span><br><span class="line">输出: 7</span><br><span class="line">解释: 在第 2 天（股票价格 &#x3D; 1）的时候买入，在第 3 天（股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     随后，在第 4 天（股票价格 &#x3D; 3）的时候买入，在第 5 天（股票价格 &#x3D; 6）的时候卖出, 这笔交易所能获得利润 &#x3D; 6-3 &#x3D; 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,4,5]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 在第 1 天（股票价格 &#x3D; 1）的时候买入，在第 5 天 （股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。</span><br><span class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。</span><br><span class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,6,4,3,1]</span><br><span class="line">输出: 0</span><br><span class="line">解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= prices.length &lt;= 3 * 10 ^ 4</code></li>
+<li><code>0 &lt;= prices[i] &lt;= 10 ^ 4</code></li>
+</ul>
+<p><strong>思路：</strong></p>
+<p>1.动态规划</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//二维数组表示第i天是否持有,对应的总利润</span></span><br><span class="line">        <span class="keyword">int</span> [][] dp = <span class="keyword">new</span> <span class="keyword">int</span> [prices.length][<span class="number">2</span>];</span><br><span class="line">        <span class="comment">//dp[i][0]表示不持有股票</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//dp[i][1]表示持有股票</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">            <span class="comment">//第i天不持有，即要么前一天也不持有,要么今天卖出</span></span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">            <span class="comment">//第i天，选择前一天和今天最便宜的股票持有</span></span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>],dp[i-<span class="number">1</span>][<span class="number">0</span>] - prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[dp.length-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.实际上这道题并没有限制每天的交易次数，当天可以买也可以卖，所以只要后一天大于前一天，就可以购买</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(prices[i+<span class="number">1</span>]&gt;prices[i])&#123;</span><br><span class="line">                max += prices[i+<span class="number">1</span>]-prices[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="123-买卖股票的最佳时机-III"><a href="#123-买卖股票的最佳时机-III" class="headerlink" title="123. 买卖股票的最佳时机 III"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">123. 买卖股票的最佳时机 III</a></h4><p>给定一个数组，它的第 <em>i</em> 个元素是一支给定的股票在第 <em>i</em> 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 <em>两笔</em> 交易。</p>
+<p><strong>注意:</strong> 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,3,5,0,0,3,1,4]</span><br><span class="line">输出: 6</span><br><span class="line">解释: 在第 4 天（股票价格 &#x3D; 0）的时候买入，在第 6 天（股票价格 &#x3D; 3）的时候卖出，这笔交易所能获得利润 &#x3D; 3-0 &#x3D; 3 。</span><br><span class="line">     随后，在第 7 天（股票价格 &#x3D; 1）的时候买入，在第 8 天 （股票价格 &#x3D; 4）的时候卖出，这笔交易所能获得利润 &#x3D; 4-1 &#x3D; 3 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,4,5]</span><br><span class="line">输出: 4</span><br><span class="line">解释: 在第 1 天（股票价格 &#x3D; 1）的时候买入，在第 5 天 （股票价格 &#x3D; 5）的时候卖出, 这笔交易所能获得利润 &#x3D; 5-1 &#x3D; 4 。   </span><br><span class="line">     注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。   </span><br><span class="line">     因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [7,6,4,3,1] </span><br><span class="line">输出: 0 </span><br><span class="line">解释: 在这个情况下, 没有交易完成, 所以最大利润为 0。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>思路：</strong></p>
+<p>状态分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">股票买卖的状态分别为：第i天的操作，可以进行j次交易,持有或者卖出</span><br><span class="line">所以对应的dp为：dp[i][j][0~1]</span><br><span class="line">而这道题可以有两次交易，枚举所有可能：</span><br><span class="line">        &#x2F;&#x2F;i表示天数 j表示第几次交易 k表示是否持有</span><br><span class="line">        &#x2F;&#x2F;第一次交易不持有：之前就是第一次交易不持有 或者 第一次交易时今天卖出</span><br><span class="line">        &#x2F;&#x2F;dp[i][1][0] &#x3D; dp[i-1][1][0]||dp[i-1][1][1]+price[i];</span><br><span class="line">        &#x2F;&#x2F;第一次交易持有：之前第0次交易不持有，今天买入 或者 第一次交易一直持有</span><br><span class="line">        &#x2F;&#x2F;dp[i][1][1] &#x3D;  -price[i]||dp[i-1][1][1]</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;第二次交易不持有：第二次交易一直不持有 或者 第二次交易今天卖出</span><br><span class="line">        &#x2F;&#x2F;dp[i][2][0] &#x3D; dp[i-1][2][0] || dp[i-1][2][1]+price[i]</span><br><span class="line">        &#x2F;&#x2F;第二次交易持有：第一次交易不持有，今天买入 或者 第二次交易一直持有</span><br><span class="line">        &#x2F;&#x2F;dp[i][2][1] &#x3D; dp[i-1][1][0]-price[i]||dp[i-1][2][1]</span><br></pre></td></tr></table></figure>
+
+<p>动态规划：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> [][][] dp = <span class="keyword">new</span> <span class="keyword">int</span> [prices.length][<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="comment">//第一次交易不持有          之前不持有     之前持有今天卖出    </span></span><br><span class="line">            dp[i][<span class="number">0</span>][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">            <span class="comment">//第一次交易持有            之前持有       0次交易不持有，今天买入 </span></span><br><span class="line">            dp[i][<span class="number">0</span>][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">1</span>], -prices[i]);</span><br><span class="line">            <span class="comment">//第二次交易不持有          之前不持有      之前持有今天卖出</span></span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">            <span class="comment">//第二次交易持有            之前持有       1次交易后不持有，今天买入</span></span><br><span class="line">            dp[i][<span class="number">1</span>][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">1</span>][<span class="number">0</span>][<span class="number">0</span>]-prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于数组对象的访问很慢，上面那种方式运行时间97ms，由于每次只判断前一次的状态，所以进行改进。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dp_1_0 = <span class="number">0</span>,dp_1_1 = -prices[<span class="number">0</span>],dp_2_0 = <span class="number">0</span>,dp_2_1=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="comment">//第二次交易不持有</span></span><br><span class="line">            dp_2_0 = Math.max(dp_2_0, dp_2_1+prices[i]);</span><br><span class="line">            <span class="comment">//第二次交易持有</span></span><br><span class="line">            dp_2_1 = Math.max(dp_2_1, dp_1_0-prices[i]);</span><br><span class="line">            <span class="comment">//第一次交易不持有</span></span><br><span class="line">            dp_1_0 = Math.max(dp_1_0, dp_1_1+prices[i]);</span><br><span class="line">            <span class="comment">//第一次交易持有</span></span><br><span class="line">            dp_1_1 = Math.max(dp_1_1, -prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp_2_0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="188-买卖股票的最佳时机-IV"><a href="#188-买卖股票的最佳时机-IV" class="headerlink" title="188. 买卖股票的最佳时机 IV"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">188. 买卖股票的最佳时机 IV</a></h4><p>给定一个数组，它的第 <em>i</em> 个元素是一支给定的股票在第 <em>i</em> 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你最多可以完成 <strong>k</strong> 笔交易。</p>
+<p><strong>注意:</strong> 你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [2,4,1], k &#x3D; 2</span><br><span class="line">输出: 2</span><br><span class="line">解释: 在第 1 天 (股票价格 &#x3D; 2) 的时候买入，在第 2 天 (股票价格 &#x3D; 4) 的时候卖出，这笔交易所能获得利润 &#x3D; 4-2 &#x3D; 2 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">输入: [3,2,6,5,0,3], k &#x3D; 2</span><br><span class="line">输出: 7</span><br><span class="line">解释: 在第 2 天 (股票价格 &#x3D; 2) 的时候买入，在第 3 天 (股票价格 &#x3D; 6) 的时候卖出, 这笔交易所能获得利润 &#x3D; 6-2 &#x3D; 4 。</span><br><span class="line">     随后，在第 5 天 (股票价格 &#x3D; 0) 的时候买入，在第 6 天 (股票价格 &#x3D; 3) 的时候卖出, 这笔交易所能获得利润 &#x3D; 3-0 &#x3D; 3 。</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>思路：</strong></p>
+<p>和上面的k=2类似，不过由于k的变化，不能枚举所有状态，所以用一个for循环遍历k。</p>
+<p>期间出现了一个问题是：当k特别大的时候，会出现超出内存。</p>
+<p>然后发现，对于一个数组，当k满足一个值时，无论再进行多少次交易，最大值都固定了。</p>
+<p>而对于这个数组来说，最多只能进行length/2次交易，所以对于k&gt;length/2，就可认为是进行无限次交易</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(k&gt;prices.length/<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="comment">//一次交易需要两天，如果k超出限制，可以认为能进行无数次交易</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length-<span class="number">1</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(prices[i]&lt;prices[i+<span class="number">1</span>])&#123;</span><br><span class="line">                    max += prices[i+<span class="number">1</span>]-prices[i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> max;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//第k次交易不持有 dp[i][k][0] = dp[i-1][k][0]||dp[i-1][k][1]+prices[i]</span></span><br><span class="line">        <span class="comment">//第k次交易持有 dp[i][k][1] = dp[i-1][k][1] || dp[i-1][k-1][0]-prices[i]</span></span><br><span class="line">        <span class="keyword">int</span> [][][] dp = <span class="keyword">new</span> <span class="keyword">int</span> [prices.length][k+<span class="number">1</span>][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = k; j &gt;=<span class="number">1</span>; j--) &#123;</span><br><span class="line">                <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">                    dp[i][j][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//                       继续空仓       之前持有，这次卖出</span></span><br><span class="line">                dp[i][j][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][j][<span class="number">0</span>], dp[i-<span class="number">1</span>][j][<span class="number">1</span>]+prices[i]);</span><br><span class="line">                <span class="comment">//                       继续持有       上次空仓，这次买入     </span></span><br><span class="line">                dp[i][j][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][j][<span class="number">1</span>], dp[i-<span class="number">1</span>][j-<span class="number">1</span>][<span class="number">0</span>]-prices[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][k][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="309-最佳买卖股票时机含冷冻期"><a href="#309-最佳买卖股票时机含冷冻期" class="headerlink" title="309. 最佳买卖股票时机含冷冻期"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" target="_blank" rel="noopener">309. 最佳买卖股票时机含冷冻期</a></h4><p>给定一个整数数组，其中第 <em>i</em> 个元素代表了第 <em>i</em> 天的股票价格 。</p>
+<p>设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<ul>
+<li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
+<li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
+</ul>
+<p><strong>示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: [1,2,3,0,2]</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 对应的交易状态为: [买入, 卖出, 冷冻期, 买入, 卖出]</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>思路：</strong></p>
+<p>对于冷冻期，则在买入时，需要判断前2天的空仓情况（因为空仓的后一天就是冷冻期）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> [][]dp = <span class="keyword">new</span> <span class="keyword">int</span> [prices.length][<span class="number">2</span>];</span><br><span class="line">        <span class="comment">//卖出后一天为冷冻期，所以买入需要从前2天开始计算</span></span><br><span class="line">        <span class="comment">//dp[i][0] = dp[i-1][0]||dp[i-1][1]+prices[i]</span></span><br><span class="line">        <span class="comment">//dp[i][1] = dp[i-1][1]||dp[i-2][0]-prices[i]</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">1</span>] = -prices[<span class="number">0</span>];</span><br><span class="line">        dp[<span class="number">1</span>][<span class="number">0</span>] = Math.max(dp[<span class="number">0</span>][<span class="number">0</span>], dp[<span class="number">0</span>][<span class="number">1</span>]+prices[<span class="number">1</span>]);</span><br><span class="line">        dp[<span class="number">1</span>][<span class="number">1</span>] = Math.max(-prices[<span class="number">0</span>], -prices[<span class="number">1</span>]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            dp[i][<span class="number">0</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">0</span>], dp[i-<span class="number">1</span>][<span class="number">1</span>]+prices[i]);</span><br><span class="line">            dp[i][<span class="number">1</span>] = Math.max(dp[i-<span class="number">1</span>][<span class="number">1</span>], dp[i-<span class="number">2</span>][<span class="number">0</span>]-prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[prices.length-<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="714-买卖股票的最佳时机含手续费"><a href="#714-买卖股票的最佳时机含手续费" class="headerlink" title="714. 买卖股票的最佳时机含手续费"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/" target="_blank" rel="noopener">714. 买卖股票的最佳时机含手续费</a></h4><p>给定一个整数数组 <code>prices</code>，其中第 <code>i</code> 个元素代表了第 <code>i</code> 天的股票价格 ；非负整数 <code>fee</code> 代表了交易股票的手续费用。</p>
+<p>你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。</p>
+<p>返回获得利润的最大值。</p>
+<p><strong>注意：</strong>这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
+<p><strong>示例 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入: prices &#x3D; [1, 3, 2, 8, 4, 9], fee &#x3D; 2</span><br><span class="line">输出: 8</span><br><span class="line">解释: 能够达到的最大利润:  </span><br><span class="line">在此处买入 prices[0] &#x3D; 1</span><br><span class="line">在此处卖出 prices[3] &#x3D; 8</span><br><span class="line">在此处买入 prices[4] &#x3D; 4</span><br><span class="line">在此处卖出 prices[5] &#x3D; 9</span><br><span class="line">总利润: ((8 - 1) - 2) + ((9 - 4) - 2) &#x3D; 8.</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意:</strong></p>
+<ul>
+<li><code>0 &lt; prices.length &lt;= 50000</code>.</li>
+<li><code>0 &lt; prices[i] &lt; 50000</code>.</li>
+<li><code>0 &lt;= fee &lt; 50000</code>.</li>
+</ul>
+<p><strong>思路：</strong></p>
+<p>无限次交易，只需要在卖出时减去手续费即可</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="keyword">int</span>[] prices, <span class="keyword">int</span> fee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(prices.length&lt;<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//每次卖出时需要给手续费fee</span></span><br><span class="line">        <span class="comment">//dp[i][0] = dp[i-1][0] || dp[i-1][1]+price[i]-fee</span></span><br><span class="line">        <span class="comment">//dp[i][1] = dp[i-1][1] || dp[i-1][0]-price[i]</span></span><br><span class="line">        <span class="keyword">int</span> dp_i_0 = <span class="number">0</span>,dp_i_1=-prices[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; prices.length; i++) &#123;</span><br><span class="line">            dp_i_0 = Math.max(dp_i_0, dp_i_1+prices[i]-fee);</span><br><span class="line">            dp_i_1 = Math.max(dp_i_1, dp_i_0-prices[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp_i_0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-09-04T08:14:46.988Z" itemprop="dateUpdated">2020-09-04 16:14:46</time>
+</span><br>
+
+
+        
+        Thanks for reading! 转载请注明出处：<a href="/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" target="_blank" rel="external">https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://www.elasticforce.top">
+            <img src="/img/avatar.jpg" alt="ElasticForce">
+            ElasticForce
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag">动态规划</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&title=《LeetCode.买卖股票系列》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&title=《LeetCode.买卖股票系列》 — Elastic&source=个人随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode.买卖股票系列》 — Elastic&url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&via=https://www.elasticforce.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/09/04/LeetCode-200.%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LeetCode-200.岛屿数量</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/09/03/%E5%89%91%E6%8C%87Offer31.%E6%A0%88%E7%9A%84%E5%8E%8B%E5%85%A5%E3%80%81%E5%BC%B9%E5%87%BA%E5%BA%8F%E5%88%97/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">剑指Offer31.栈的压入、弹出序列</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "",
+            appKey: "",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>ElasticForce &copy; 2015 - 2020</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&title=《LeetCode.买卖股票系列》 — Elastic&pic=https://www.elasticforce.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&title=《LeetCode.买卖股票系列》 — Elastic&source=个人随笔" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode.买卖股票系列》 — Elastic&url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/&via=https://www.elasticforce.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=https://www.elasticforce.top/2020/09/04/LeetCode.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%B3%BB%E5%88%97/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Elastic的Blog?';
+            clearTimeout(titleTime);
+        } else {
+            document.title = 'Elastic的Blog!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
